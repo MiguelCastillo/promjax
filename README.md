@@ -1,4 +1,4 @@
-promJax
+promjax
 =======
 
 Promise based Ajax
