@@ -5,7 +5,7 @@
   "main": "dist/promjax.js",
   "scripts": {
     "prepublish": "browserify src/ajax.js -o dist/promjax.js -s promjax --dg false",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
