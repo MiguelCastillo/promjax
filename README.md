@@ -17,8 +17,8 @@ Method that will create an `xmlhttprequest` instance to make an Ajax request.
 - @property {object} `data` - Data to be sent along with the request.  No restrictions on this.  Whatever the underlying `xmlhttprequest` supports is what you are limited to.
 - @property {boolean} `async` - flag to make the request synchronous.  It defaults to true.
 - @property {object} `headers` - collection of key/value pair of header name and header value.
-- @property {string} `user` - value as defined by W3C. https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
-- @property {string} `password` - value as defined by W3C. https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+- @property {string} `user` - value as defined by W3C. [MDN link](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+- @property {string} `password` - value as defined by W3C. [MDN link](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 - @property {string} `responseType` - data type for the response.  Currently, only `json` is supported.  If anything else other than `json` is provided, you will just get the raw `responseText`.  But you can define a `transform` method if you would to pre-process the response before the deferred promise is resolved.
 - @property {function} `transform` - is method that is called with responseText when the Ajax request has completed. The method is called right before the deferred promise is resolved to give a chance for external transformations to take place.  This is really useful when converting response like JSON before the reponse is handed back in the resolved promised.
 
