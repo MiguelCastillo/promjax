@@ -10,7 +10,7 @@ Overly simplified Promise based Ajax provider - xmlhttprequest and promises.  Mo
 
 Method that will create an `xmlhttprequest` instance to make an Ajax request.
 
-@param {object} options - Configuration for the Ajax call.
+@param {object | string} options - Configuration for the Ajax call.  If `options` is a string, then options is internally coerced to the `url` of the request.
 
 - @property {string} `url` - end point where the ajax request is going to.
 - @property {string} `method` - HTTP verb for the request. Default is `GET`.  There are really no restrictions imposed by `promjax` on the verbs, so whatever is passed in will be used; only limited to what the underlying `xmlhttprequest` implementation supports.
@@ -23,6 +23,42 @@ Method that will create an `xmlhttprequest` instance to make an Ajax request.
 - @property {function} `transform` - method that is called with the responseText when the Ajax request has completed. The method is called right before the deferred promise is resolved to give you a chance to process your data.  This is really useful when converting response like JSON before the reponse is handed back in the resolved deferred promise.
 
 @returns {Promise}
+
+
+##### example
+
+1. Ajax request with just a string [from unit tests]:
+
+``` javascript
+ajax("SpecRunner.html")
+  .then(function(response, request) {
+    console.log(response);
+  });
+```
+
+2. Ajax request with an `options` object specifying a `reponseType` [from unit tests]:
+
+``` javascript
+ajax({
+  url: "json/artists.json",
+  responseType: "json"
+})
+.then(function(response, request) {
+  console.log(response);
+});
+```
+
+3. Ajax request with an `options` object specifying a `tranform` method [from unit tests]:
+
+``` javascript
+ajax({
+  url: "json/artists.json",
+  transform: JSON.parse
+})
+.then(function(response, request) {
+  console.log(response);
+});
+```
 
 ### Install
 
