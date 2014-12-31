@@ -1,6 +1,6 @@
 {
   "name": "promjax",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Promise based Ajax",
   "main": "dist/promjax.js",
   "scripts": {
