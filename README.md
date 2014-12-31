@@ -1,7 +1,7 @@
 promjax
 =======
 
-Overly simplified Promise based Ajax provider - xmlhttprequest and promises.  Most of the supported fields in promjax are just simple pass through right into the underlying `xmlhttprequest` object.  So if there are some specific about some of the fields documented here, please feel free to refer to [the doc](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).  Or go ahead an log an issue and I will be happy to help.
+Overly simplified Promise based Ajax provider - xmlhttprequest and promises.  Most of the supported options in promjax are just simple pass through right into the underlying `xmlhttprequest` object.  So if there are specific questions about the options documented here, please feel free to refer to [the doc](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).  Or go ahead an log an issue and I will be happy to help.
 
 
 ### API
