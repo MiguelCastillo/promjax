@@ -25,9 +25,9 @@
     var request  = new XMLHttpRequest(),
         url      = options.url,
         method   = options.method  || "GET",
-        async    = options.async   || true,
         data     = options.data    || null,
-        headers  = options.headers || {};
+        headers  = options.headers || {},
+        async    = Boolean(options.async);
 
     if (!url) {
       throw new TypeError("Must provide a URL");
