@@ -2,7 +2,7 @@
   "name": "promjax",
   "version": "0.0.5",
   "description": "Promise based Ajax",
-  "main": "dist/promjax.js",
+  "main": "src/ajax.js",
   "scripts": {
     "prepublish": "grunt build",
     "test": "grunt test"
