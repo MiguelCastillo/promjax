@@ -21,7 +21,7 @@
 (function() {
   "use strict";
 
-  var Promise = require('spromise');
+  var Promise = require('./promise');
 
   var readyStates = {
     UNSENT           : 0, // open()has not been called yet.
@@ -94,6 +94,12 @@
 
   module.exports = Ajax;
 })();
+
+},{"./promise":3}],3:[function(require,module,exports){
+(function() {
+  "use strict";
+  module.exports = require("spromise");
+}());
 
 },{"spromise":1}]},{},[2])(2)
 });
