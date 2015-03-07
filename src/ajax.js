@@ -27,7 +27,7 @@
         method   = options.method  || "GET",
         data     = options.data    || null,
         headers  = options.headers || {},
-        async    = Boolean(options.async);
+        async    = true;
 
     if (!url) {
       throw new TypeError("Must provide a URL");
