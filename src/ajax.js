@@ -39,18 +39,9 @@
       }
     }
 
-    if (async) {
-      request.onreadystatechange = StateChanged.bind(request, options, deferred);
-    }
-
-    // Send request
+    request.onreadystatechange = StateChanged.bind(request, options, deferred);
     request.open(method, url, async, options.user, options.password);
     request.send(data);
-
-    if (!async) {
-      StateChanged.call(request, options, deferred);
-    }
-
     return deferred.promise;
   }
 
