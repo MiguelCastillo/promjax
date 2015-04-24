@@ -673,14 +673,15 @@
       throw new TypeError("Must provide a URL");
     }
 
+    request.onreadystatechange = StateChanged.bind(request, options, deferred);
+    request.open(method, url, async, options.user, options.password);
+
     for (var header in headers) {
       if (headers.hasOwnProperty(header)) {
         request.setRequestHeader(header, headers[header]);
       }
     }
 
-    request.onreadystatechange = StateChanged.bind(request, options, deferred);
-    request.open(method, url, async, options.user, options.password);
     request.send(data);
     return deferred.promise;
   }
