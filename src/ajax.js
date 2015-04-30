@@ -6,7 +6,7 @@
 (function() {
   "use strict";
 
-  var Promise = require('./promise');
+  var Promise = require('Promise');
 
   var readyStates = {
     UNSENT           : 0, // open()has not been called yet.

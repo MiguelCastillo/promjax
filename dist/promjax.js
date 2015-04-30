@@ -646,7 +646,7 @@
 (function() {
   "use strict";
 
-  var Promise = require('./promise');
+  var Promise = require('Promise');
 
   var readyStates = {
     UNSENT           : 0, // open()has not been called yet.
@@ -712,11 +712,5 @@
   module.exports = Ajax;
 })();
 
-},{"./promise":8}],8:[function(require,module,exports){
-(function() {
-  "use strict";
-  module.exports = require("spromise");
-}());
-
-},{"spromise":5}]},{},[7])(7)
+},{"Promise":5}]},{},[7])(7)
 });
