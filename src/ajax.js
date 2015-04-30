@@ -33,6 +33,14 @@
       throw new TypeError("Must provide a URL");
     }
 
+    if (options.hasOwnProperty("withCredentials")) {
+      request.withCredentials = options.withCredentials;
+    }
+    
+    if (options.hasOwnProperty("timeout")) {
+      request.timeout = options.timeout;
+    }
+
     request.onreadystatechange = StateChanged.bind(request, options, deferred);
     request.open(method, url, async, options.user, options.password);
 
