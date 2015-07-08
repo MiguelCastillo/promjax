@@ -8,6 +8,7 @@
   "globals":{
     "module": true,
     "require": true,
-    "window": true
+    "window": true,
+    "Promise": true
   }
 }

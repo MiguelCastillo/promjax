@@ -57,10 +57,11 @@ module.exports = function(grunt) {
           "dist/promjax.js": ["src/ajax.js"]
         },
         options: {
+          banner: "/*! <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today() %>. (c) <%= grunt.template.today('yyyy') %> Miguel Castillo. Licensed under MIT */",
           browserifyOptions: {
-            "detectGlobals": false,
-            "ignoreMissing": true,
-            "standalone": "promjax"
+            detectGlobals: true,
+            ignoreMissing: true,
+            standalone: "promjax"
           }
         }
       }
