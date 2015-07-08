@@ -5,6 +5,7 @@ Promise based Ajax provider - xmlhttprequest and promises.
 
 > promjax *only* executes asynchronous requests and does not provide a way to configure your requests to run *synchronously*.
 
+> ** Promises must be polyfilled and for unit testing purposes, promjax uses [spromise](https://github.com/MiguelCastillo/spromise)**
 
 ### API
 
