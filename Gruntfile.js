@@ -44,6 +44,7 @@ module.exports = function(grunt) {
     uglify: {
       build: {
         options: {
+          preserveComments: 'some',
           sourceMap: true
         },
         files: {
