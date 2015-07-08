@@ -6,8 +6,6 @@
 (function() {
   "use strict";
 
-  var Promise = require('Promise');
-
   var readyStates = {
     UNSENT           : 0, // open()has not been called yet.
     OPENED           : 1, // send()has not been called yet.
@@ -36,7 +34,7 @@
     if (options.hasOwnProperty("withCredentials")) {
       request.withCredentials = options.withCredentials;
     }
-    
+
     if (options.hasOwnProperty("timeout")) {
       request.timeout = options.timeout;
     }
