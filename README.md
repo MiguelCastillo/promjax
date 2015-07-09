@@ -72,7 +72,7 @@ ajax({
 });
 ```
 
-5- Specify global success and error handlers that every single request goes through.
+5- Specify global success and error handlers that every request goes through.
 
 ``` javascript
 // success is called each time an XHR request is successful - The server sends any
