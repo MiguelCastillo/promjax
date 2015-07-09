@@ -66,16 +66,35 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+    concurrent: {
+      test: {
+        tasks: ["connect:keepalive", "watch:test"],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
+    watch: {
+      test: {
+        files: ["src/*.js", "test/**/*.js", "*.js"],
+        tasks: ["build"],
+        options: {
+          livereload: 32010
+        }
+      }
     }
   });
 
-  grunt.loadNpmTasks("grunt-contrib-uglify");
-  grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-browserify");
   grunt.loadNpmTasks("grunt-mocha");
+  grunt.loadNpmTasks("grunt-concurrent");
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks("grunt-contrib-jshint");
+  grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-connect");
 
   grunt.registerTask("build", ["jshint:all", "browserify:build", "uglify:build"]);
-  grunt.registerTask("server", ["connect:keepalive"]);
+  grunt.registerTask("serve", ["build", "concurrent:test"]);
   grunt.registerTask("test", ["connect:test", "mocha:test"]);
 };
