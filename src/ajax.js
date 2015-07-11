@@ -11,7 +11,6 @@ function Ajax(options) {
     options = {url: options};
   }
 
-  var deferred = Promise.defer();
   var request  = new XMLHttpRequest();
   var url      = options.url;
   var method   = options.method  || "GET";
@@ -31,54 +30,53 @@ function Ajax(options) {
     request.timeout = options.timeout;
   }
 
-  request.onreadystatechange = StateChanged(request, options, deferred);
-  request.open(method, url, async, options.user, options.password);
+  return new Promise(function(resolve, reject) {
+    function StateChangedDelegate() {
+      var state = request.readyState;
 
-  // Make sure to add all the headers.
-  addHeader(request, Ajax.headers);
-  addHeader(request, headers);
-
-  request.send(data);
-  return deferred.promise;
-}
-
-function StateChanged(request, options, deferred) {
-  return function StateChangedDelegate() {
-    var state = request.readyState;
-
-    // If there is a state change handler, call it with the request object and options.
-    if (options.stateChange) {
-      options.stateChange(request, options);
-    }
-
-    if (state === readyStates.DONE) {
-      if (request.status >= 100 && request.status < 300) {
-        // Handle response transformation.
-        var result = (options.transform || transform)(request.responseText, request.getResponseHeader("Content-Type"));
-
-        // Call global success handler
-        Ajax.success(result, request);
-
-        if (options.success) {
-          options.success(result, request);
-        }
-
-        // Resolve deferred Promise
-        deferred.resolve(result);
+      // If there is a state change handler, call it with the request object and options.
+      if (options.stateChange) {
+        options.stateChange(request, options);
       }
-      else {
-        // Call global error handler
-        Ajax.error(request);
 
-        if (options.reject) {
-          options.reject(request);
+      if (state === readyStates.DONE) {
+        if (request.status >= 100 && request.status < 300) {
+          // Handle response transformation.
+          var result = (options.transform || transform)(request.responseText, request.getResponseHeader("Content-Type"));
+
+          // Call global success handler
+          Ajax.success(result, request);
+
+          if (options.success) {
+            options.success(result, request);
+          }
+
+          // Resolve deferred Promise
+          resolve(result);
         }
+        else {
+          // Call global error handler
+          Ajax.error(request);
 
-        // Reject deferred Promise
-        deferred.reject(request);
+          if (options.error) {
+            options.error(request);
+          }
+
+          // Reject deferred Promise
+          reject(request);
+        }
       }
     }
-  };
+
+    request.onreadystatechange = StateChangedDelegate;
+    request.open(method, url, async, options.user, options.password);
+
+    // Make sure to add all the headers.
+    addHeader(request, Ajax.headers);
+    addHeader(request, headers);
+
+    request.send(data);
+  });
 }
 
 function transform(text, type) {
