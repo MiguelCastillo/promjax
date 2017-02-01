@@ -1,6 +1,8 @@
 promjax
 =======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/MiguelCastillo/promjax.svg)](https://greenkeeper.io/)
+
 Promise based Ajax provider - xmlhttprequest and promises.
 
 > promjax *only* executes asynchronous requests and does not provide a way to configure your requests to run *synchronously*.
